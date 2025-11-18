@@ -245,7 +245,7 @@ class Game:
         area_chosen = -1
         daypart = ""
 
-        # Ensures that
+        # Ensures that the user properly enters their desired Pokémon set.
         pkmn_set_char = pkmn_set_char.strip().lower()
         if pkmn_set_char == "a":
             pkmn_set = alphabetical
@@ -279,17 +279,20 @@ class Game:
         
         pkmn_set[area_chosen].generate(self.game,daypart,type,power,self.dupes)
 
-    def distribution(self, pkmn_set_int, area, time, type, power):
+    def distribution(self, pkmn_set_char, area, time, type, power):
         pkmn_set = {}
         area_chosen = -1
         daypart = ""
-        if pkmn_set_int == 1:
+
+        # Ensures that the user properly enters their desired Pokémon set.
+        pkmn_set_char = pkmn_set_char.strip().lower()
+        if pkmn_set_char == "a":
             pkmn_set = alphabetical
-        elif pkmn_set_int == 0:
+        elif pkmn_set_char == "c":
             pkmn_set = chronological
         else:
-            print("0 = chronological")
-            print("1 = alphabetical")
+            print("a = alphabetical")
+            print("c = chronological")
             return None
 
         if 1 <= area and area <= 30:
@@ -315,18 +318,21 @@ class Game:
         
         pkmn_set[area_chosen].distribution(self.game, daypart,type,power,self.dupes)
 
-    def locate(self, pkmn_set_int, pkmn):
-        if pkmn_set_int == 1:
+    def locate(self, pkmn_set_char, pkmn):
+        # Ensures that the user properly enters their desired Pokémon set.
+        pkmn_set_char = pkmn_set_char.strip().lower()
+        if pkmn_set_char == "a":
             pkmn_set = alphabetical
-        elif pkmn_set_int == 0:
+        elif pkmn_set_char == "c":
             pkmn_set = chronological
         else:
-            print("0 = chronological")
-            print("1 = alphabetical")
+            print("a = alphabetical")
+            print("c = chronological")
             return None
         
-        habitats = []
+        habitats = [] # Habitat stores the locations that the Pokémon is found in.
         for x in range(len(pkmn_set)):
+            
             pkmn_found = False
             dawn_found = False
             day_found = False
