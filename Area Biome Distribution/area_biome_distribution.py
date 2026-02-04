@@ -25,13 +25,13 @@ class Area:
         self.image_name = i_name
 
         
-
     def count(self):
         # For every biome, check if it exists in the region
         image_folder = Path("../images/")
         area_folder = image_folder / self.image_name
         biomes_list = ["Bamboo_Forest","Beach","Cave","Desert","Flower","Forest","Lake","Mine","Mountain",
                        "Ocean","Olive","Prairie","Riverside","Rocky_Area","Ruins","Snowfield","Swamp","Town"]
+        missing_biome_count = 0
         
         for biome in biomes_list:
             file_name = f"{area_folder}_Map_{biome}.png"
@@ -47,7 +47,15 @@ class Area:
                     self.biome_pixels[biome_name] = b_pixels
                     self.pixel_total += b_pixels
             except FileNotFoundError:
-                pass # Do nothing
+                missing_biome_count += 1
+        
+        # If none of the traditional biomes are present, create a special biome.
+        # Only applies to Cabo Poco and Great Crater of Paldea.
+        if missing_biome_count == len(biomes_list):
+            biome_name = "Special"
+            self.biomes.append(biome_name)
+            self.biome_pixels[biome_name] = 100
+            self.pixel_total += 100
 
     def calculate_distribution(self):
         # For every biome, access their pixels within the biome_pixels dictionary and compare it to pixel_total.
@@ -71,3 +79,9 @@ class Area:
             for biome in self.biomes:
                 line = f"{biome},{self.distribution[biome]}\n"
                 f1.write(line)
+
+    def run(self):
+        self.count()
+        self.calculate_distribution()
+        self.csv()
+
