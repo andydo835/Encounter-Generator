@@ -1,0 +1,34 @@
+def add(self, name, weight):
+        dawn = 0
+        day = 0
+        dusk = 0
+        night = 0
+        if weight.find("/") != -1:
+            ws = weight.split("/")
+            dawn = int(ws[0])
+            day = int(ws[1])
+            dusk = int(ws[2])
+            night = int(ws[3])
+        else:
+            dawn = int(weight)
+            day = int(weight)
+            dusk = int(weight)
+            night = int(weight)
+
+        
+        # For testing/reworking purposes
+        # activation = ""
+        # if activation == "ACTIVATE":
+        # self.raw_probability(name,weight)
+
+        if self.f_key(name) == False:
+            self.pokemon.append(name)
+            self.dawn[name] = dawn
+            self.day[name] = day
+            self.dusk[name] = dusk
+            self.night[name] = night
+        else:
+            self.dawn[name] = self.dawn[name] + dawn
+            self.day[name] = self.day[name] + day
+            self.dusk[name] = self.dusk[name] + dusk
+            self.night[name] = self.night[name] + night
