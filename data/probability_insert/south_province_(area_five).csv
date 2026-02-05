@@ -133,6 +133,6 @@ Floette,Fairy,Fairy,Flower,55,55,55,55
 Floette,Fairy,Fairy,Flower,55,55,55,55
 Floette,Fairy,Fairy,Flower,3,3,3,3
 Fomantis,Grass,Grass,Flower,60,60,60,60
-Gastly,Ghost,Poison,,15,15,15,15
-Bronzor,Steel,Psychic,,60,60,60,60
-Tinkatink,Fairy,Steel,,15,15,15,15
+Gastly,Ghost,Poison,Ruins,15,15,15,15
+Bronzor,Steel,Psychic,Ruins,60,60,60,60
+Tinkatink,Fairy,Steel,Ruins,15,15,15,15

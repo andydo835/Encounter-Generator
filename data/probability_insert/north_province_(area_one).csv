@@ -55,15 +55,15 @@ Floatzel,Water,Water,Riverside,10,10,10,10
 Fraxure,Dragon,Dragon,Riverside,5,5,5,5
 Drakloak (Violet),Dragon,Ghost,Riverside,5,5,5,5
 Bellibolt,Electric,Electric,Riverside,5,5,5,5
-Cloyster,Water,Ice,Cloyster,10,10,10,10
-Gyarados,Water,Flying,Cloyster,5,5,5,5
-Floatzel,Water,Water,Cloyster,40,40,40,40
-Alomomola,Water,Water,Cloyster,20,20,20,20
-Skrelp (Scarlet),Poison,Water,Cloyster,60,60,60,60
-Dragalge (Scarlet),Poison,Water,Cloyster,20,20,20,20
-Clawitzer (Violet),Water,Water,Cloyster,20,20,20,20
-Eiscue (Violet),Ice,Ice,Cloyster,50,50,50,50
-Kilowattrel,Electric,Flying,Cloyster,30,30,30,30
+Cloyster,Water,Ice,Ocean,10,10,10,10
+Gyarados,Water,Flying,Ocean,5,5,5,5
+Floatzel,Water,Water,Ocean,40,40,40,40
+Alomomola,Water,Water,Ocean,20,20,20,20
+Skrelp (Scarlet),Poison,Water,Ocean,60,60,60,60
+Dragalge (Scarlet),Poison,Water,Ocean,20,20,20,20
+Clawitzer (Violet),Water,Water,Ocean,20,20,20,20
+Eiscue (Violet),Ice,Ice,Ocean,50,50,50,50
+Kilowattrel,Electric,Flying,Ocean,30,30,30,30
 Primeape,Fighting,Fighting,Rocky Area,10,10,10,10
 Grumpig,Psychic,Psychic,Rocky Area,20,20,20,20
 Honchkrow,Dark,Flying,Rocky Area,0,0,20,20

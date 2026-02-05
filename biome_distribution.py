@@ -139,3 +139,6 @@ list.append(socarrat_trail)
 list.append(dalizapa_passage)
 list.append(pokemon_league)
 list.append(great_crater_of_paldea)
+
+for area in list:
+    area.run()

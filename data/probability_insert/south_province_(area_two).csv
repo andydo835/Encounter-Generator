@@ -20,13 +20,13 @@ Misdreavus (Violet),Ghost,Ghost,Mountain,0,0,0,15
 Skiddo,Grass,Grass,Mountain,60,60,60,60
 Rockruff (Standard),Rock,Rock,Mountain,40,40,40,40
 Rockruff (Own Tempo),Rock,Rock,Mountain,2,2,2,2
-Psyduck,Water,Water,Psyduck,60,60,60,60
-Magikarp,Water,Water,Psyduck,20,20,20,20
-Azurill,Normal,Fairy,Psyduck,60,60,60,60
-Buizel,Water,Water,Psyduck,20,20,20,20
-Chewtle,Water,Water,Psyduck,10,10,10,10
-Arrokuda,Water,Water,Psyduck,40,40,40,40
-Tadbulb,Electric,Electric,Psyduck,50,50,50,50
+Psyduck,Water,Water,Riverside,60,60,60,60
+Magikarp,Water,Water,Riverside,20,20,20,20
+Azurill,Normal,Fairy,Riverside,60,60,60,60
+Buizel,Water,Water,Riverside,20,20,20,20
+Chewtle,Water,Water,Riverside,10,10,10,10
+Arrokuda,Water,Water,Riverside,40,40,40,40
+Tadbulb,Electric,Electric,Riverside,50,50,50,50
 Makuhita,Fighting,Fighting,Rocky Area,30,30,30,30
 Yungoos,Normal,Normal,Rocky Area,20,20,20,20
 Nacli,Rock,Rock,Rocky Area,60,60,60,60
@@ -38,14 +38,14 @@ Flabebe,Fairy,Fairy,Flower,60,60,60,60
 Flabebe,Fairy,Fairy,Flower,60,60,60,60
 Flabebe,Fairy,Fairy,Flower,60,60,60,60
 Flabebe,Fairy,Fairy,Flower,6,6,6,6
-Diglett,Ground,Ground,Diglett,50,50,50,50
-Eevee,Normal,Normal,Diglett,5,5,5,5
-Mareep,Electric,Electric,Diglett,30,30,30,30
-Starly,Normal,Flying,Diglett,30,30,30,0
-Kricketot,Bug,Bug,Diglett,30,30,30,30
-Combee,Bug,Flying,Diglett,30,30,30,30
-Skwovet,Normal,Normal,Diglett,30,30,30,30
-Smoliv,Grass,Normal,Diglett,100,100,100,100
+Diglett,Ground,Ground,Olive,50,50,50,50
+Eevee,Normal,Normal,Olive,5,5,5,5
+Mareep,Electric,Electric,Olive,30,30,30,30
+Starly,Normal,Flying,Olive,30,30,30,0
+Kricketot,Bug,Bug,Olive,30,30,30,30
+Combee,Bug,Flying,Olive,30,30,30,30
+Skwovet,Normal,Normal,Olive,30,30,30,30
+Smoliv,Grass,Normal,Olive,100,100,100,100
 Gastly,Ghost,Poison,Ruins,15,15,15,15
 Drowzee,Psychic,Psychic,Ruins,40,40,40,40
 Bronzor,Steel,Psychic,Ruins,60,60,60,60
