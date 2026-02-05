@@ -111,7 +111,7 @@ class Area:
         Docstring for find_dupe
         
         :param self: Area object.
-        :param dupes: List of Strings representing Pokemon in the form "Name_Typestring" such as "Pikachu_Electric" or "Charizard_Fire_Flying".
+        :param dupes: List of Strings representing Pokemon in the form "Name_Typestring" such as "Pikachu_Electric" or "Charizard_Fire_Flying". Typically, argument will be "dupes" list recorded by Game object.
         :param pkmn_to_check: String representing the Pokemon that is being checked if it already exists.
         :param rule_enabled: Boolean that signifies if the function will perform any operations. 
 
