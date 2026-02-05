@@ -1,0 +1,406 @@
+Sprigatito,Sprigatito_Floragato_Meowscarada
+Floragato,Sprigatito_Floragato_Meowscarada
+Meowscarada,Sprigatito_Floragato_Meowscarada
+Fuecoco,Fuecoco_Crocalor_Skeledirge
+Crocalor,Fuecoco_Crocalor_Skeledirge
+Skeledirge,Fuecoco_Crocalor_Skeledirge
+Quaxly,Quaxly_Quaxwell_Quaquaval
+Quaxwell,Quaxly_Quaxwell_Quaquaval
+Quaquaval,Quaxly_Quaxwell_Quaquaval
+Lechonk,Lechonk_Oinkologne (Male)_Oinkologne (Female)
+Oinkologne (Male),Lechonk_Oinkologne (Male)_Oinkologne (Female)
+Oinkologne (Female),Lechonk_Oinkologne (Male)_Oinkologne (Female)
+Tarountula,Tarountula_Spidops
+Spidops,Tarountula_Spidops
+Nymble,Nymble_Lokix
+Lokix,Nymble_Lokix
+Hoppip,Hoppip_Skiploom_Jumpluff
+Skiploom,Hoppip_Skiploom_Jumpluff
+Jumpluff,Hoppip_Skiploom_Jumpluff
+Fletchling,Fletchling_Fletchinder_Talonflame
+Fletchinder,Fletchling_Fletchinder_Talonflame
+Talonflame,Fletchling_Fletchinder_Talonflame
+Pawmi,Pawmi_Pawmo_Pawmot
+Pawmo,Pawmi_Pawmo_Pawmot
+Pawmot,Pawmi_Pawmo_Pawmot
+Houndour,Houndour_Houndoom
+Houndoom,Houndour_Houndoom
+Yungoos,Yungoos_Gumshoos
+Gumshoos,Yungoos_Gumshoos
+Skwovet,Skwovet_Greedent
+Greedent,Skwovet_Greedent
+Sunkern,Sunkern_Sunflora
+Sunflora,Sunkern_Sunflora
+Kricketot,Kricketot_Kricketune
+Kricketune,Kricketot_Kricketune
+Scatterbug,Scatterbug_Spewpa_Vivillon
+Spewpa,Scatterbug_Spewpa_Vivillon
+Vivillon,Scatterbug_Spewpa_Vivillon
+Combee,Combee_Vespiquen
+Vespiquen,Combee_Vespiquen
+Rookidee,Rookidee_Corvisquire_Corviknight
+Corvisquire,Rookidee_Corvisquire_Corviknight
+Corviknight,Rookidee_Corvisquire_Corviknight
+Happiny,Happiny_Chansey_Blissey
+Chansey,Happiny_Chansey_Blissey
+Blissey,Happiny_Chansey_Blissey
+Azurill,Azurill_Marill_Azumarill
+Marill,Azurill_Marill_Azumarill
+Azumarill,Azurill_Marill_Azumarill
+Surskit,Surskit_Masquerain
+Masquerain,Surskit_Masquerain
+Buizel,Buizel_Floatzel
+Floatzel,Buizel_Floatzel
+Wooper,Wooper_Clodsire
+Clodsire,Wooper_Clodsire
+Psyduck,Psyduck_Golduck
+Golduck,Psyduck_Golduck
+Chewtle,Chewtle_Drednaw
+Drednaw,Chewtle_Drednaw
+Igglybuff,Igglybuff_Jigglypuff_Wigglytuff
+Jigglypuff,Igglybuff_Jigglypuff_Wigglytuff
+Wigglytuff,Igglybuff_Jigglypuff_Wigglytuff
+Ralts,Ralts_Kirlia_Gardevoir_Gallade
+Kirlia,Ralts_Kirlia_Gardevoir_Gallade
+Gardevoir,Ralts_Kirlia_Gardevoir_Gallade
+Gallade,Ralts_Kirlia_Gardevoir_Gallade
+Drowzee,Drowzee_Hypno
+Hypno,Drowzee_Hypno
+Gastly,Gastly_Haunter_Gengar
+Haunter,Gastly_Haunter_Gengar
+Gengar,Gastly_Haunter_Gengar
+Tandemaus,Tandemaus_Maushold
+Maushold,Tandemaus_Maushold
+Pichu,Pichu_Pikachu_Raichu
+Pikachu,Pichu_Pikachu_Raichu
+Raichu,Pichu_Pikachu_Raichu
+Fidough,Fidough_Dachsbun
+Dachsbun,Fidough_Dachsbun
+Slakoth,Slakoth_Vigoroth_Slaking
+Vigoroth,Slakoth_Vigoroth_Slaking
+Slaking,Slakoth_Vigoroth_Slaking
+Bounsweet,Bounsweet_Steenee_Tsareena
+Steenee,Bounsweet_Steenee_Tsareena
+Tsareena,Bounsweet_Steenee_Tsareena
+Smoliv,Smoliv_Dolliv_Arboliva
+Dolliv,Smoliv_Dolliv_Arboliva
+Arboliva,Smoliv_Dolliv_Arboliva
+Bonsly,Bonsly_Sudowoodo
+Sudowoodo,Bonsly_Sudowoodo
+Rockruff (Standard),Rockruff (Standard)_Rockruff (Own Tempo)_Lycanroc (Midday)_Lycanroc (Midnight)_Lycanroc (Dusk)
+Rockruff (Own Tempo),Rockruff (Standard)_Rockruff (Own Tempo)_Lycanroc (Midday)_Lycanroc (Midnight)_Lycanroc (Dusk)
+Lycanroc (Midday),Rockruff (Standard)_Rockruff (Own Tempo)_Lycanroc (Midday)_Lycanroc (Midnight)_Lycanroc (Dusk)
+Lycanroc (Midnight),Rockruff (Standard)_Rockruff (Own Tempo)_Lycanroc (Midday)_Lycanroc (Midnight)_Lycanroc (Dusk)
+Lycanroc (Dusk),Rockruff (Standard)_Rockruff (Own Tempo)_Lycanroc (Midday)_Lycanroc (Midnight)_Lycanroc (Dusk)
+Rolycoly,Rolycoly_Carkol_Coalossal
+Carkol,Rolycoly_Carkol_Coalossal
+Coalossal,Rolycoly_Carkol_Coalossal
+Shinx,Shinx_Luxio_Luxray
+Luxio,Shinx_Luxio_Luxray
+Luxray,Shinx_Luxio_Luxray
+Starly,Starly_Staravia_Staraptor
+Staravia,Starly_Staravia_Staraptor
+Staraptor,Starly_Staravia_Staraptor
+Oricorio (Pom-Pom Style),Oricorio (Pom-Pom Style)_Oricorio (Baile Style)
+Oricorio (Baile Style),Oricorio (Pom-Pom Style)_Oricorio (Baile Style)
+Mareep,Mareep_Flaaffy_Ampharos
+Flaaffy,Mareep_Flaaffy_Ampharos
+Ampharos,Mareep_Flaaffy_Ampharos
+Petilil,Petilil_Lilligant
+Lilligant,Petilil_Lilligant
+Shroomish,Shroomish_Breloom
+Breloom,Shroomish_Breloom
+Applin,Applin_Flapple_Appletun
+Flapple,Applin_Flapple_Appletun
+Appletun,Applin_Flapple_Appletun
+Spoink,Spoink_Grumpig
+Grumpig,Spoink_Grumpig
+Squawkabilly,Squawkabilly
+Misdreavus (Violet),Misdreavus (Violet)_Mismagius (Violet)
+Mismagius (Violet),Misdreavus (Violet)_Mismagius (Violet)
+Makuhita,Makuhita_Hariyama
+Hariyama,Makuhita_Hariyama
+Crabrawler,Crabrawler_Crabominable
+Crabominable,Crabrawler_Crabominable
+Salandit,Salandit_Salazzle
+Salazzle,Salandit_Salazzle
+Phanpy,Phanpy_Donphan
+Donphan,Phanpy_Donphan
+Cufant,Cufant_Copperajah
+Copperajah,Cufant_Copperajah
+Gible,Gible_Gabite_Garchomp
+Gabite,Gible_Gabite_Garchomp
+Garchomp,Gible_Gabite_Garchomp
+Nacli,Nacli_Naclstack_Garganacl
+Naclstack,Nacli_Naclstack_Garganacl
+Garganacl,Nacli_Naclstack_Garganacl
+Wingull,Wingull_Pelipper
+Pelipper,Wingull_Pelipper
+Magikarp,Magikarp_Gyarados
+Gyarados,Magikarp_Gyarados
+Arrokuda,Arrokuda_Barraskewda
+Barraskewda,Arrokuda_Barraskewda
+Basculin (Red-Striped),Basculin (Red-Striped)_Basculin (Blue-Striped)
+Basculin (Blue-Striped),Basculin (Red-Striped)_Basculin (Blue-Striped)
+Gulpin (Violet),Gulpin (Violet)_Swalot (Violet)
+Swalot (Violet),Gulpin (Violet)_Swalot (Violet)
+Meowth,Meowth_Persian
+Persian,Meowth_Persian
+Drifloon (Scarlet),Drifloon (Scarlet)_Drifblim (Scarlet)
+Drifblim (Scarlet),Drifloon (Scarlet)_Drifblim (Scarlet)
+Flabébé,Flabébé_Floette_Florges
+Floette,Flabébé_Floette_Florges
+Florges,Flabébé_Floette_Florges
+Diglett,Diglett_Dugtrio
+Dugtrio,Diglett_Dugtrio
+Torkoal,Torkoal
+Numel,Numel_Camerupt
+Camerupt,Numel_Camerupt
+Bronzor,Bronzor_Bronzong
+Bronzong,Bronzor_Bronzong
+Axew,Axew_Fraxure_Haxorus
+Fraxure,Axew_Fraxure_Haxorus
+Haxorus,Axew_Fraxure_Haxorus
+Mankey,Mankey_Primeape_Annihilape
+Primeape,Mankey_Primeape_Annihilape
+Annihilape,Mankey_Primeape_Annihilape
+Meditite,Meditite_Medicham
+Medicham,Meditite_Medicham
+Riolu,Riolu_Lucario
+Lucario,Riolu_Lucario
+Charcadet,Charcadet_Armarouge (Scarlet)_Ceruledge (Violet)
+Armarouge (Scarlet),Charcadet_Armarouge (Scarlet)_Ceruledge (Violet)
+Ceruledge (Violet),Charcadet_Armarouge (Scarlet)_Ceruledge (Violet)
+Barboach,Barboach_Whiscash
+Whiscash,Barboach_Whiscash
+Tadbulb,Tadbulb_Bellibolt
+Bellibolt,Tadbulb_Bellibolt
+Goomy,Goomy_Sliggoo_Goodra
+Sliggoo,Goomy_Sliggoo_Goodra
+Goodra,Goomy_Sliggoo_Goodra
+Croagunk,Croagunk_Toxicroak
+Toxicroak,Croagunk_Toxicroak
+Wattrel,Wattrel_Kilowattrel
+Kilowattrel,Wattrel_Kilowattrel
+Eevee,Eevee_Vaporeon_Jolteon_Flareon_Espeon_Umbreon_Leafeon_Glaceon_Sylveon
+Vaporeon,Eevee_Vaporeon_Jolteon_Flareon_Espeon_Umbreon_Leafeon_Glaceon_Sylveon
+Jolteon,Eevee_Vaporeon_Jolteon_Flareon_Espeon_Umbreon_Leafeon_Glaceon_Sylveon
+Flareon,Eevee_Vaporeon_Jolteon_Flareon_Espeon_Umbreon_Leafeon_Glaceon_Sylveon
+Espeon,Eevee_Vaporeon_Jolteon_Flareon_Espeon_Umbreon_Leafeon_Glaceon_Sylveon
+Umbreon,Eevee_Vaporeon_Jolteon_Flareon_Espeon_Umbreon_Leafeon_Glaceon_Sylveon
+Leafeon,Eevee_Vaporeon_Jolteon_Flareon_Espeon_Umbreon_Leafeon_Glaceon_Sylveon
+Glaceon,Eevee_Vaporeon_Jolteon_Flareon_Espeon_Umbreon_Leafeon_Glaceon_Sylveon
+Sylveon,Eevee_Vaporeon_Jolteon_Flareon_Espeon_Umbreon_Leafeon_Glaceon_Sylveon
+Dunsparce,Dunsparce_Dudunsparce
+Dudunsparce,Dunsparce_Dudunsparce
+Deerling,Deerling_Sawsbuck
+Sawsbuck,Deerling_Sawsbuck
+Girafarig,Girafarig_Farigiraf
+Farigiraf,Girafarig_Farigiraf
+Grimer,Grimer_Muk
+Muk,Grimer_Muk
+Maschiff,Maschiff_Mabosstiff
+Mabosstiff,Maschiff_Mabosstiff
+Toxel,Toxel_Toxtricity
+Toxtricity,Toxel_Toxtricity
+Dedenne,Dedenne
+Pachirisu,Pachirisu
+Shroodle,Shroodle_Grafaiai
+Grafaiai,Shroodle_Grafaiai
+Stantler,Stantler
+Foongus,Foongus_Amoonguss
+Amoonguss,Foongus_Amoonguss
+Voltorb,Voltorb_Electrode
+Electrode,Voltorb_Electrode
+Magnemite,Magnemite_Magneton_Magnezone
+Magneton,Magnemite_Magneton_Magnezone
+Magnezone,Magnemite_Magneton_Magnezone
+Ditto,Ditto
+Growlithe,Growlithe_Arcanine
+Arcanine,Growlithe_Arcanine
+Teddiursa,Teddiursa_Ursaring
+Ursaring,Teddiursa_Ursaring
+Zangoose,Zangoose
+Seviper,Seviper
+Swablu,Swablu_Altaria
+Altaria,Swablu_Altaria
+Skiddo,Skiddo_Gogoat
+Gogoat,Skiddo_Gogoat
+Tauros (Combat Breed),Tauros (Combat Breed)_Tauros (Blaze Breed) (Scarlet)_Tauros (Aqua Breed) (Violet)
+Tauros (Blaze Breed) (Scarlet),Tauros (Combat Breed)_Tauros (Blaze Breed) (Scarlet)_Tauros (Aqua Breed) (Violet)
+Tauros (Aqua Breed) (Violet),Tauros (Combat Breed)_Tauros (Blaze Breed) (Scarlet)_Tauros (Aqua Breed) (Violet)
+Litleo,Litleo_Pyroar
+Pyroar,Litleo_Pyroar
+Stunky (Scarlet),Stunky (Scarlet)_Skuntank (Scarlet)
+Skuntank (Scarlet),Stunky (Scarlet)_Skuntank (Scarlet)
+Zorua,Zorua_Zoroark
+Zoroark,Zorua_Zoroark
+Sneasel,Sneasel_Weavile
+Weavile,Sneasel_Weavile
+Murkrow,Murkrow_Honchkrow
+Honchkrow,Murkrow_Honchkrow
+Gothita,Gothita_Gothorita_Gothitelle
+Gothorita,Gothita_Gothorita_Gothitelle
+Gothitelle,Gothita_Gothorita_Gothitelle
+Sinistea,Sinistea_Polteageist
+Polteageist,Sinistea_Polteageist
+Mimikyu,Mimikyu
+Klefki,Klefki
+Indeedee,Indeedee
+Bramblin,Bramblin_Brambleghast
+Brambleghast,Bramblin_Brambleghast
+Toedscool,Toedscool_Toedscruel
+Toedscruel,Toedscool_Toedscruel
+Tropius,Tropius
+Fomantis,Fomantis_Lurantis
+Lurantis,Fomantis_Lurantis
+Klawf,Klawf
+Capsakid,Capsakid_Scovillain
+Scovillain,Capsakid_Scovillain
+Cacnea,Cacnea_Cacturne
+Cacturne,Cacnea_Cacturne
+Rellor,Rellor_Rabsca
+Rabsca,Rellor_Rabsca
+Venonat,Venonat_Venomoth
+Venomoth,Venonat_Venomoth
+Pineco,Pineco_Forretress
+Forretress,Pineco_Forretress
+Scyther,Scyther_Scizor
+Scizor,Scyther_Scizor
+Heracross,Heracross
+Flittle,Flittle_Espathra
+Espathra,Flittle_Espathra
+Hippopotas,Hippopotas_Hippowdon
+Hippowdon,Hippopotas_Hippowdon
+Sandile,Sandile_Krokorok_Krookodile
+Krokorok,Sandile_Krokorok_Krookodile
+Krookodile,Sandile_Krokorok_Krookodile
+Silicobra,Silicobra_Sandaconda
+Sandaconda,Silicobra_Sandaconda
+Mudbray,Mudbray_Mudsdale
+Mudsdale,Mudbray_Mudsdale
+Larvesta,Larvesta_Volcarona
+Volcarona,Larvesta_Volcarona
+Bagon (Violet),Bagon (Violet)_Shelgon (Violet)_Salamence (Violet)
+Shelgon (Violet),Bagon (Violet)_Shelgon (Violet)_Salamence (Violet)
+Salamence (Violet),Bagon (Violet)_Shelgon (Violet)_Salamence (Violet)
+Tinkatink,Tinkatink_Tinkatuff_Tinkaton
+Tinkatuff,Tinkatink_Tinkatuff_Tinkaton
+Tinkaton,Tinkatink_Tinkatuff_Tinkaton
+Hatenna,Hatenna_Hattrem_Hatterene
+Hattrem,Hatenna_Hattrem_Hatterene
+Hatterene,Hatenna_Hattrem_Hatterene
+Impidimp,Impidimp_Morgrem_Grimmsnarl
+Morgrem,Impidimp_Morgrem_Grimmsnarl
+Grimmsnarl,Impidimp_Morgrem_Grimmsnarl
+Wiglett,Wiglett_Wugtrio
+Wugtrio,Wiglett_Wugtrio
+Bombirdier,Bombirdier
+Finizen,Finizen_Palafin
+Palafin,Finizen_Palafin
+Varoom,Varoom_Revavroom
+Revavroom,Varoom_Revavroom
+Cyclizar,Cyclizar
+Orthworm,Orthworm
+Sableye,Sableye
+Shuppet,Shuppet_Banette
+Banette,Shuppet_Banette
+Falinks,Falinks
+Hawlucha,Hawlucha
+Spiritomb,Spiritomb
+Noibat,Noibat_Noivern
+Noivern,Noibat_Noivern
+Dreepy (Violet),Dreepy (Violet)_Drakloak (Violet)_Dragapult (Violet)
+Drakloak (Violet),Dreepy (Violet)_Drakloak (Violet)_Dragapult (Violet)
+Dragapult (Violet),Dreepy (Violet)_Drakloak (Violet)_Dragapult (Violet)
+Glimmet,Glimmet_Glimmora
+Glimmora,Glimmet_Glimmora
+Rotom,Rotom
+Greavard,Greavard_Houndstone
+Houndstone,Greavard_Houndstone
+Oranguru (Scarlet),Oranguru (Scarlet)
+Passimian (Violet),Passimian (Violet)
+Komala,Komala
+Larvitar (Scarlet),Larvitar (Scarlet)_Pupitar (Scarlet)_Tyranitar (Scarlet)
+Pupitar (Scarlet),Larvitar (Scarlet)_Pupitar (Scarlet)_Tyranitar (Scarlet)
+Tyranitar (Scarlet),Larvitar (Scarlet)_Pupitar (Scarlet)_Tyranitar (Scarlet)
+Stonjourner (Scarlet),Stonjourner (Scarlet)
+Eiscue (Violet),Eiscue (Violet)
+Pincurchin,Pincurchin
+Sandygast,Sandygast_Palossand
+Palossand,Sandygast_Palossand
+Slowpoke,Slowpoke_Slowbro_Slowking
+Slowbro,Slowpoke_Slowbro_Slowking
+Slowking,Slowpoke_Slowbro_Slowking
+Shellos,Shellos_Gastrodon
+Gastrodon,Shellos_Gastrodon
+Qwilfish,Qwilfish
+Luvdisc,Luvdisc
+Finneon,Finneon_Lumineon
+Lumineon,Finneon_Lumineon
+Bruxish,Bruxish
+Alomomola,Alomomola
+Skrelp (Scarlet),Skrelp (Scarlet)_Dragalge (Scarlet)
+Dragalge (Scarlet),Skrelp (Scarlet)_Dragalge (Scarlet)
+Clauncher (Violet),Clauncher (Violet)_Clawitzer (Violet)
+Clawitzer (Violet),Clauncher (Violet)_Clawitzer (Violet)
+Tynamo,Tynamo_Eelektrik_Eelektross
+Eelektrik,Tynamo_Eelektrik_Eelektross
+Eelektross,Tynamo_Eelektrik_Eelektross
+Mareanie,Mareanie_Toxapex
+Toxapex,Mareanie_Toxapex
+Flamigo,Flamigo
+Dratini,Dratini_Dragonair_Dragonite
+Dragonair,Dratini_Dragonair_Dragonite
+Dragonite,Dratini_Dragonair_Dragonite
+Snom,Snom_Frosmoth
+Frosmoth,Snom_Frosmoth
+Snover,Snover_Abomasnow
+Abomasnow,Snover_Abomasnow
+Delibird,Delibird
+Cubchoo,Cubchoo_Beartic
+Beartic,Cubchoo_Beartic
+Snorunt,Snorunt_Glalie_Froslass
+Glalie,Snorunt_Glalie_Froslass
+Froslass,Snorunt_Glalie_Froslass
+Cryogonal,Cryogonal
+Cetoddle,Cetoddle_Cetitan
+Cetitan,Cetoddle_Cetitan
+Bergmite,Bergmite_Avalugg
+Avalugg,Bergmite_Avalugg
+Rufflet,Rufflet_Braviary
+Braviary,Rufflet_Braviary
+Pawniard,Pawniard_Bisharp_Kingambit
+Bisharp,Pawniard_Bisharp_Kingambit
+Kingambit,Pawniard_Bisharp_Kingambit
+Deino (Scarlet),Deino (Scarlet)_Zweilous (Scarlet)_Hydreigon (Scarlet)
+Zweilous (Scarlet),Deino (Scarlet)_Zweilous (Scarlet)_Hydreigon (Scarlet)
+Hydreigon (Scarlet),Deino (Scarlet)_Zweilous (Scarlet)_Hydreigon (Scarlet)
+Veluza,Veluza
+Dondozo,Dondozo
+Tatsugiri,Tatsugiri
+Great Tusk (Scarlet),Great Tusk (Scarlet)
+Scream Tail (Scarlet),Scream Tail (Scarlet)
+Brute Bonnet (Scarlet),Brute Bonnet (Scarlet)
+Flutter Mane (Scarlet),Flutter Mane (Scarlet)
+Slither Wing (Scarlet),Slither Wing (Scarlet)
+Sandy Shocks (Scarlet),Sandy Shocks (Scarlet)
+Iron Treads (Violet),Iron Treads (Violet)
+Iron Bundle (Violet),Iron Bundle (Violet)
+Iron Hands (Violet),Iron Hands (Violet)
+Iron Jugulis (Violet),Iron Jugulis (Violet)
+Iron Moth (Violet),Iron Moth (Violet)
+Iron Thorns (Violet),Iron Thorns (Violet)
+Frigibax,Frigibax_Arctibax_Baxcalibur
+Arctibax,Frigibax_Arctibax_Baxcalibur
+Baxcalibur,Frigibax_Arctibax_Baxcalibur
+Gimmighoul,Gimmighoul_Gholdengo
+Gholdengo,Gimmighoul_Gholdengo
+Wo-Chien,Wo-Chien
+Chien-Pao,Chien-Pao
+Ting-Lu,Ting-Lu
+Chi-Yu,Chi-Yu
+Roaring Moon (Scarlet),Roaring Moon (Scarlet)
+Iron Valiant (Violet),Iron Valiant (Violet)
+Koraidon (Scarlet),Koraidon (Scarlet)
+Miraidon (Violet),Miraidon (Violet)

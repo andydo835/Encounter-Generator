@@ -1,7 +1,5 @@
 import random
 import modules.name_conventions.nc as nc
-import numpy as np
-
             
 class Area:
     def __init__(self, name):
@@ -111,7 +109,7 @@ class Area:
         Docstring for find_dupe
         
         :param self: Area object.
-        :param dupes: List of Strings representing Pokemon in the form "Name_Typestring" such as "Pikachu_Electric" or "Charizard_Fire_Flying". Typically, argument will be "dupes" list recorded by Game object.
+        :param dupes: Set of Strings representing Pokemon in the form "Name_Typestring" such as "Pikachu_Electric" or "Charizard_Fire_Flying". Typically, argument will be "dupes" set recorded by Game object.
         :param pkmn_to_check: String representing the Pokemon that is being checked if it already exists.
         :param rule_enabled: Boolean that signifies if the function will perform any operations. 
 
@@ -139,8 +137,7 @@ class Area:
         # Compare the Pokemon to be checked to every Pokemon in the dupes list
         # Return whether or not the Pokemon is a dupe
         # Names are compared in lowercase in case of any strange case input errors.
-        found = any(pkmn_to_check.lower() == dupe.lower() for dupe in dupes)
-        return found
+        return any(pkmn_to_check == dupe.lower() for dupe in dupes)
 
     def distribution(self, game, time, type, power, dupes, check_dupes):
 
@@ -413,15 +410,14 @@ class Game:
         self.game = game.strip().lower().capitalize()
         self.areas = []
         self.box = []
-        self.dupes = []
-        self.links = []
+        self.links = {}
+        self.dupes = set()
         self.pokedex = []
         self.alphabetical = {}
         self.chronological = {}
 
-        f = open("data/pokedex/paldea_dex.txt", "r")
-        self.pokedex = f.readlines()
-        f.close()
+        with open("data/pokedex/paldea_dex.txt","r") as f1:
+            self.pokedex = f1.readlines()
         
         for x in range(len(self.pokedex)):
             self.pokedex[x] = self.pokedex[x][0:len(self.pokedex[x])-1].strip()
@@ -429,227 +425,21 @@ class Game:
         self.define_links()
         self.load_areas()
         
-
-
     def define_links(self):
-        self.links.append([self.pokedex[0],self.pokedex[1],self.pokedex[2]]) # Sprigatito
-        self.links.append([self.pokedex[3],self.pokedex[4],self.pokedex[5]]) # Fuecoco
-        self.links.append([self.pokedex[6],self.pokedex[7],self.pokedex[8]]) # Quaxly
-        self.links.append([self.pokedex[9],"Oinkologne (Male)","Oinkologne (Female)"]) # Lechonk
-        self.links.append([self.pokedex[11],self.pokedex[12]]) # Tarountula
-        self.links.append([self.pokedex[13],self.pokedex[14]]) # Nymble
-        self.links.append([self.pokedex[15],self.pokedex[16],self.pokedex[17]]) # Hoppip
-        self.links.append([self.pokedex[18],self.pokedex[19],self.pokedex[20]]) # Fletchling
-        self.links.append([self.pokedex[21],self.pokedex[22],self.pokedex[23]]) # Pawmi
-        self.links.append([self.pokedex[24],self.pokedex[25]]) # Houndour
-        self.links.append([self.pokedex[26],self.pokedex[27]]) # Yungoos
-        self.links.append([self.pokedex[28],self.pokedex[29]]) # Skwovet
-        self.links.append([self.pokedex[30],self.pokedex[31]]) # Sunkern
-        self.links.append([self.pokedex[32],self.pokedex[33]]) # Kricketot
-        self.links.append([self.pokedex[34],self.pokedex[35],self.pokedex[36]]) # Scatterbug
-        self.links.append([self.pokedex[37],self.pokedex[38]]) # Combee
-        self.links.append([self.pokedex[39],self.pokedex[40],self.pokedex[41]]) # Rookidee
-        self.links.append([self.pokedex[42],self.pokedex[43],self.pokedex[44]]) # Happiny
-        self.links.append([self.pokedex[45],self.pokedex[46],self.pokedex[47]]) # Azurill
-        self.links.append([self.pokedex[48],self.pokedex[49]]) # Surskit
-        self.links.append([self.pokedex[50],self.pokedex[51]]) # Buizel
-        self.links.append([self.pokedex[52],self.pokedex[53]]) # Wooper
-        self.links.append([self.pokedex[54],self.pokedex[55]]) # Psyduck
-        self.links.append([self.pokedex[56],self.pokedex[57]]) # Chewtle
-        self.links.append([self.pokedex[58],self.pokedex[59],self.pokedex[60]]) # Igglybuff
-        self.links.append([self.pokedex[61],self.pokedex[62],self.pokedex[63],self.pokedex[64]]) # Ralts
-        self.links.append([self.pokedex[65],self.pokedex[66]]) # Drowzee
-        self.links.append([self.pokedex[67],self.pokedex[68],self.pokedex[69]]) # Gastly
-        self.links.append([self.pokedex[70],self.pokedex[71]]) # Tandemaus
-        self.links.append([self.pokedex[72],self.pokedex[73],self.pokedex[74]]) # Pichu
-        self.links.append([self.pokedex[75],self.pokedex[76]]) # Fidough
-        self.links.append([self.pokedex[77],self.pokedex[78],self.pokedex[79]]) # Slakoth
-        self.links.append([self.pokedex[80],self.pokedex[81],self.pokedex[82]]) # Bounsweet
-        self.links.append([self.pokedex[83],self.pokedex[84],self.pokedex[85]]) # Smoliv
-        self.links.append([self.pokedex[86],self.pokedex[87]]) # Bonsly
-        self.links.append(["Rockruff (Standard)", "Rockruff (Own Tempo)","Lycanroc (Midday)","Lycanroc (Midnight)","Lycanroc (Dusk)"]) # Rockruff
-        self.links.append([self.pokedex[90],self.pokedex[91],self.pokedex[92]]) # Rolycoly
-        self.links.append([self.pokedex[93],self.pokedex[94],self.pokedex[95]]) # Shinx
-        self.links.append([self.pokedex[96],self.pokedex[97],self.pokedex[98]]) # Starly
-        self.links.append(["Oricorio (Pom-Pom Style)","Oricorio (Baile Style)"]) # Oricorio
-        self.links.append([self.pokedex[100],self.pokedex[101],self.pokedex[102]]) # Mareep
-        self.links.append([self.pokedex[103],self.pokedex[104]]) # Petilil
-        self.links.append([self.pokedex[105],self.pokedex[106]]) # Shroomish
-        self.links.append([self.pokedex[107],self.pokedex[108],self.pokedex[109]]) # Applin
-        self.links.append([self.pokedex[110],self.pokedex[111]]) # Spoink
-        self.links.append([self.pokedex[112]]) # Squawkabilly
-        self.links.append([self.pokedex[113]+" (Violet)",self.pokedex[114]+" (Violet)"]) # Misdreavus
-        self.links.append([self.pokedex[115],self.pokedex[116]]) # Makuhita
-        self.links.append([self.pokedex[117],self.pokedex[118]]) # Crabrawler
-        self.links.append([self.pokedex[119],self.pokedex[120]]) # Salandit
-        self.links.append([self.pokedex[121],self.pokedex[122]]) # Phanpy
-        self.links.append([self.pokedex[123],self.pokedex[124]]) # Cufant
-        self.links.append([self.pokedex[125],self.pokedex[126],self.pokedex[127]]) # Gible
-        self.links.append([self.pokedex[128],self.pokedex[129],self.pokedex[130]]) # Nacli
-        self.links.append([self.pokedex[131],self.pokedex[132]]) # Wingull
-        self.links.append([self.pokedex[133],self.pokedex[134]]) # Magikarp
-        self.links.append([self.pokedex[135],self.pokedex[136]]) # Arrokuda
-        self.links.append(["Basculin (Red-Striped)","Basculin (Blue-Striped)"]) # Basculin
-        self.links.append([self.pokedex[138]+" (Violet)",self.pokedex[139]+" (Violet)"]) # Gulpin
-        self.links.append([self.pokedex[140],self.pokedex[141]]) # Meowth
-        self.links.append([self.pokedex[142]+" (Scarlet)",self.pokedex[143]+" (Scarlet)"]) # Drifloon
-        self.links.append([self.pokedex[144],self.pokedex[145],self.pokedex[146]]) # Flabebe
-        self.links.append([self.pokedex[147],self.pokedex[148]]) # Diglett
-        self.links.append([self.pokedex[149]]) # Torkoal
-        self.links.append([self.pokedex[150],self.pokedex[151]]) # Numel
-        self.links.append([self.pokedex[152],self.pokedex[153]]) # Bronzor
-        self.links.append([self.pokedex[154],self.pokedex[155],self.pokedex[156]]) # Axew
-        self.links.append([self.pokedex[157],self.pokedex[158],self.pokedex[159]]) # Mankey
-        self.links.append([self.pokedex[160],self.pokedex[161]]) # Meditite
-        self.links.append([self.pokedex[162],self.pokedex[163]]) # Riolu
-        self.links.append([self.pokedex[164],self.pokedex[165]+" (Scarlet)",self.pokedex[166]+" (Violet)"]) # Charcadet
-        self.links.append([self.pokedex[167],self.pokedex[168]]) # Barboach
-        self.links.append([self.pokedex[169],self.pokedex[170]]) # Tadbulb
-        self.links.append([self.pokedex[171],self.pokedex[172],self.pokedex[173]]) # Goomy
-        self.links.append([self.pokedex[174],self.pokedex[175]]) # Croagunk
-        self.links.append([self.pokedex[176],self.pokedex[177]]) # Wattrel
-        self.links.append([self.pokedex[178],self.pokedex[179],self.pokedex[180],self.pokedex[181],self.pokedex[182],self.pokedex[183],self.pokedex[184],self.pokedex[185],self.pokedex[186]]) # Eevee
-        self.links.append([self.pokedex[187],self.pokedex[188]]) # Dunsparce
-        self.links.append([self.pokedex[189],self.pokedex[190]]) # Deerling
-        self.links.append([self.pokedex[191],self.pokedex[192]]) # Girafarig
-        self.links.append([self.pokedex[193],self.pokedex[194]]) # Grimer
-        self.links.append([self.pokedex[195],self.pokedex[196]]) # Maschiff
-        self.links.append([self.pokedex[197],self.pokedex[198]]) # Toxel
-        self.links.append([self.pokedex[199]]) # Dedenne
-        self.links.append([self.pokedex[200]]) # Pachirisu
-        self.links.append([self.pokedex[201],self.pokedex[202]]) # Shroodle
-        self.links.append([self.pokedex[203]]) # Stantler
-        self.links.append([self.pokedex[204],self.pokedex[205]]) # Foongus
-        self.links.append([self.pokedex[206],self.pokedex[207]]) # Voltorb
-        self.links.append([self.pokedex[208],self.pokedex[209],self.pokedex[210]]) # Magnemite
-        self.links.append([self.pokedex[211]]) # Ditto
-        self.links.append([self.pokedex[212],self.pokedex[213]]) # Growlithe
-        self.links.append([self.pokedex[214],self.pokedex[215]]) # Teddiursa
-        self.links.append([self.pokedex[216]]) # Zangoose
-        self.links.append([self.pokedex[217]]) # Seviper
-        self.links.append([self.pokedex[218],self.pokedex[219]]) # Swablu
-        self.links.append([self.pokedex[220],self.pokedex[221]]) # Skiddo
-        self.links.append(["Tauros (Combat Breed)", "Tauros (Blaze Breed) (Scarlet)","Tauros (Aqua Breed) (Violet)"]) # Tauros
-        self.links.append([self.pokedex[223],self.pokedex[224]]) # Litleo
-        self.links.append([self.pokedex[225]+" (Scarlet)",self.pokedex[226]+" (Scarlet)"]) # Stunky
-        self.links.append([self.pokedex[227],self.pokedex[228]]) # Zorua
-        self.links.append([self.pokedex[229],self.pokedex[230]]) # Sneasel
-        self.links.append([self.pokedex[231],self.pokedex[232]]) # Murkrow
-        self.links.append([self.pokedex[233],self.pokedex[234],self.pokedex[235]]) # Gothita
-        self.links.append([self.pokedex[236],self.pokedex[237]]) # Sinistea
-        self.links.append([self.pokedex[238]]) # Mimikyu
-        self.links.append([self.pokedex[239]]) # Klefki
-        self.links.append([self.pokedex[240]]) # Indeedee
-        self.links.append([self.pokedex[241],self.pokedex[242]]) # Bramblin
-        self.links.append([self.pokedex[243],self.pokedex[244]]) # Toedscool
-        self.links.append([self.pokedex[245]]) # Tropius
-        self.links.append([self.pokedex[246],self.pokedex[247]]) # Fomantis
-        self.links.append([self.pokedex[248]]) # Klawf
-        self.links.append([self.pokedex[249],self.pokedex[250]]) # Capsakid
-        self.links.append([self.pokedex[251],self.pokedex[252]]) # Cacnea
-        self.links.append([self.pokedex[253],self.pokedex[254]]) # Rellor
-        self.links.append([self.pokedex[255],self.pokedex[256]]) # Venonat
-        self.links.append([self.pokedex[257],self.pokedex[258]]) # Pineco
-        self.links.append([self.pokedex[259],self.pokedex[260]]) # Scyther
-        self.links.append([self.pokedex[261]]) # Heracross
-        self.links.append([self.pokedex[262],self.pokedex[263]]) # Flittle
-        self.links.append([self.pokedex[264],self.pokedex[265]]) # Hippopotas
-        self.links.append([self.pokedex[266],self.pokedex[267],self.pokedex[268]]) # Sandile
-        self.links.append([self.pokedex[269],self.pokedex[270]]) # Silicobra
-        self.links.append([self.pokedex[271],self.pokedex[272]]) # Mudbray
-        self.links.append([self.pokedex[273],self.pokedex[274]]) # Larvesta
-        self.links.append([self.pokedex[275]+" (Violet)",self.pokedex[276]+" (Violet)",self.pokedex[277]+" (Violet)"]) # Bagon
-        self.links.append([self.pokedex[278],self.pokedex[279],self.pokedex[280]]) # Tinkatink
-        self.links.append([self.pokedex[281],self.pokedex[282],self.pokedex[283]]) # Hatenna
-        self.links.append([self.pokedex[284],self.pokedex[285],self.pokedex[286]]) # Impidimp
-        self.links.append([self.pokedex[287],self.pokedex[288]]) # Wiglett
-        self.links.append([self.pokedex[289]]) # Bombirdier
-        self.links.append([self.pokedex[290],self.pokedex[291]]) # Finizen
-        self.links.append([self.pokedex[292],self.pokedex[293]]) # Varoom
-        self.links.append([self.pokedex[294]]) # Cyclizar
-        self.links.append([self.pokedex[295]]) # Orthworm
-        self.links.append([self.pokedex[296]]) # Sableye
-        self.links.append([self.pokedex[297],self.pokedex[298]]) # Shuppet
-        self.links.append([self.pokedex[299]]) # Falinks
-        self.links.append([self.pokedex[300]]) # Hawlucha
-        self.links.append([self.pokedex[301]]) # Spiritomb
-        self.links.append([self.pokedex[302],self.pokedex[303]]) # Noibat
-        self.links.append([self.pokedex[304]+" (Violet)",self.pokedex[305]+" (Violet)",self.pokedex[306]+" (Violet)"]) # Dreepy
-        self.links.append([self.pokedex[307],self.pokedex[308]]) # Glimmet
-        self.links.append([self.pokedex[309]]) # Rotom
-        self.links.append([self.pokedex[310],self.pokedex[311]]) # Greavard
-        self.links.append([self.pokedex[312]+" (Scarlet)"]) # Oranguru
-        self.links.append([self.pokedex[313]+" (Violet)"]) # Passimian
-        self.links.append([self.pokedex[314]]) # Komala
-        self.links.append([self.pokedex[315]+" (Scarlet)",self.pokedex[316]+" (Scarlet)",self.pokedex[317]+" (Scarlet)"]) # Larvitar
-        self.links.append([self.pokedex[318]+" (Scarlet)"]) # Stonjourner
-        self.links.append([self.pokedex[319]+" (Violet)"]) # Eiscue
-        self.links.append([self.pokedex[320]]) # Pincurchin
-        self.links.append([self.pokedex[321],self.pokedex[322]]) # Sandygast
-        self.links.append([self.pokedex[323],self.pokedex[324],self.pokedex[325]]) # Slowpoke
-        self.links.append([self.pokedex[326],self.pokedex[327]]) # Shellder
-        self.links.append([self.pokedex[330]]) # Qwilfish
-        self.links.append([self.pokedex[331]]) # Luvdisc
-        self.links.append([self.pokedex[332],self.pokedex[333]]) # Finneon
-        self.links.append([self.pokedex[334]]) # Bruxish
-        self.links.append([self.pokedex[335]]) # Alomomola
-        self.links.append([self.pokedex[336]+" (Scarlet)",self.pokedex[337]+" (Scarlet)"]) # Skrelp
-        self.links.append([self.pokedex[338]+" (Violet)",self.pokedex[339]+" (Violet)"]) # Clauncher
-        self.links.append([self.pokedex[340],self.pokedex[341],self.pokedex[342]]) # Tynamo
-        self.links.append([self.pokedex[343],self.pokedex[344]]) # Mareanie
-        self.links.append([self.pokedex[345]]) # Flamigo
-        self.links.append([self.pokedex[346],self.pokedex[347],self.pokedex[348]]) # Dratini
-        self.links.append([self.pokedex[349],self.pokedex[350]]) # Snom
-        self.links.append([self.pokedex[351],self.pokedex[352]]) # Snover
-        self.links.append([self.pokedex[353]]) # Delibird
-        self.links.append([self.pokedex[354],self.pokedex[355]]) # Cubchoo
-        self.links.append([self.pokedex[356],self.pokedex[357],self.pokedex[358]]) # Snorunt
-        self.links.append([self.pokedex[359]]) # Cryogonal
-        self.links.append([self.pokedex[360],self.pokedex[361]])  # Cetoddle
-        self.links.append([self.pokedex[362],self.pokedex[363]]) # Bergmite
-        self.links.append([self.pokedex[364],self.pokedex[365]]) # Rufflet
-        self.links.append([self.pokedex[366],self.pokedex[367],self.pokedex[368]]) # Pawniard
-        self.links.append([self.pokedex[369]+" (Scarlet)",self.pokedex[370]+" (Scarlet)",self.pokedex[371]+" (Scarlet)"]) # Deino
-        self.links.append([self.pokedex[372]]) # Veluza
-        self.links.append([self.pokedex[373]]) # Dondozo
-        self.links.append([self.pokedex[374]]) # Tatsugiri
-        self.links.append([self.pokedex[375]+" (Scarlet)"]) # Great Tusk
-        self.links.append([self.pokedex[376]+" (Scarlet)"]) # Scream Tail
-        self.links.append([self.pokedex[377]+" (Scarlet)"]) # Brute Bonnet 
-        self.links.append([self.pokedex[378]+" (Scarlet)"]) # Flutter Mane 
-        self.links.append([self.pokedex[379]+" (Scarlet)"]) # Slither Wing 
-        self.links.append([self.pokedex[380]+" (Scarlet)"]) # Sandy Shocks 
-        self.links.append([self.pokedex[381]+" (Violet)"]) # Iron Treads
-        self.links.append([self.pokedex[382]+" (Violet)"]) # Iron Bundle
-        self.links.append([self.pokedex[383]+" (Violet)"]) # Iron Hands
-        self.links.append([self.pokedex[384]+" (Violet)"]) # Iron Jugulis
-        self.links.append([self.pokedex[385]+" (Violet)"]) # Iron Moth
-        self.links.append([self.pokedex[386]+" (Violet)"]) # Iron Thorns
-        self.links.append([self.pokedex[387],self.pokedex[388],self.pokedex[389]]) # Frigibax
-        self.links.append([self.pokedex[390],self.pokedex[391]]) # Gimmighoul
-        self.links.append([self.pokedex[392]]) # Wo-Chien
-        self.links.append([self.pokedex[393]]) # Chien-Pao
-        self.links.append([self.pokedex[394]]) # Ting-Li
-        self.links.append([self.pokedex[395]]) # Chi-Yu
-        self.links.append([self.pokedex[396]+" (Scarlet)"]) # Roaring Moon
-        self.links.append([self.pokedex[397]+" (Violet)"]) # Iron Valiant
-        self.links.append([self.pokedex[398]+" (Scarlet)"]) # Koraidon
-        self.links.append([self.pokedex[399]+" (Violet)"]) # Miraidon
+        links = ""
+        with open("data/pokedex/links.txt", "r") as f1:
+            links = f1.readlines()
+        for line in links:
+            pkmn_list = line.strip().split(",")
+            header_pkmn = pkmn_list[0]
+            linked_pkmn = pkmn_list[1].split("_")
+            self.links[header_pkmn] = linked_pkmn
 
-    def dupe_out(self):
-        found = False
-        for boxed_mon in self.box:
-            for link in self.links:
-                for pkmn in link:
-                    if boxed_mon.strip().lower() == pkmn.strip().lower():
-                        found = True
-                    if found == True:
-                        for x in link:
-                            self.dupes.append(x)
-                        break
-                if found == True:
-                    found = False
-                    break 
+    def populate_dupes(self):
+        for boxed_pkmn in self.box:
+            link = self.links[boxed_pkmn]
+            for pkmn in link:
+                self.dupes.add(pkmn)
 
     def generate(self, pkmn_set_int, area, time, type, power, check_dupes):
         pkmn_set = {}
@@ -795,9 +585,10 @@ class Game:
         self.alphabetical = duo[1]
         self.chronological = duo[0]
 
+
 g = Game("Scarlet")
 g.box = ["Crocalor","Clodsire","Gumshoos","Arrokuda","Klawf","Bombirdier", "Magikarp", "Gimmighoul","Azumarill","Oinkologne (Male)","Tauros (Combat Breed)", "Goomy","Basculin (Red-Striped)"]
-g.dupe_out()
+g.populate_dupes()
 g.distribution(0,15,1,"Flying",0,True)
 g.generate(0,15,1,"Flying",0,True)
 #g.generate(0,8,1,"Flying",0)
