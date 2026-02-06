@@ -1,3 +1,8 @@
+"""
+Docstring for models.pokemon
+As of right now, this class is unused.
+"""
+
 class Pokemon:
     def __init__(self, name, type1, type2, dawn, day, dusk, night):
         dawn = float(dawn)
