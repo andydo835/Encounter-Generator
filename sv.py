@@ -515,20 +515,32 @@ class Game:
         
         pkmn_set[area].distribution(self.game, daypart, type, power, self.dupes, check_dupes)
 
-    def locate(self, pkmn):
-        pkmn = pkmn.strip().lower()
-        areas_dict = self.alphabetical
-        habitats = []
+    def locate(self, pkmn_to_find):
+        """
+        Docstring for locate
+        
+        :param self: Game object.
+        :param pkmn_to_find: String representing name of Pokemon to be found.
+        """
+        pkmn_to_find = pkmn_to_find.strip().lower()
+        areas = self.alphabetical
+        habitats = [] # A list is used instead of a set because a set does not print in the same order every time.
 
-        for area in areas_dict.values():
-            dawn_found = any(native_pkmn.strip().lower().find(pkmn) for native_pkmn in area.dawn.keys())
-            day_found = any(native_pkmn.strip().lower().find(pkmn) for native_pkmn in area.day.keys())
-            dusk_found = any(native_pkmn.strip().lower().find(pkmn) for native_pkmn in area.dusk.keys())
-            night_found = any(native_pkmn.strip().lower().find(pkmn) for native_pkmn in area.night.keys())
+        for area in areas.values():
+            
+            # areas is a dictionary with K: "Area Name", V: Area object.
+            # areas.values() represents Area objects, therefore area is an Area object.
+            # native_pkmn are String objects representing the Pokemon that can be found in an area's daypart.
+            dawn_found = any(native_pkmn.strip().lower().split("_")[0] == pkmn_to_find for native_pkmn in area.dawn.keys())
+            day_found = any(native_pkmn.strip().lower().split("_")[0] == pkmn_to_find for native_pkmn in area.day.keys())
+            dusk_found = any(native_pkmn.strip().lower().split("_")[0] == pkmn_to_find for native_pkmn in area.dusk.keys())
+            night_found = any(native_pkmn.strip().lower().split("_")[0] == pkmn_to_find for native_pkmn in area.night.keys())
 
+            # If a Pokemon are found in every daypart, then simply the Area is named.
             if dawn_found and day_found and dusk_found and night_found:
                 habitats.append(area.name)
-            else:
+            # If a Pokemon is only found in specific dayparts, then it will list which Area and dayparts it can be found in.
+            elif dawn_found or day_found or dusk_found or night_found:
                 string = f"{area.name} ("
                 if dawn_found:
                     string = f"{string}Dawn, "
@@ -544,9 +556,12 @@ class Game:
 
                 string = string[0:len(string)-2] + ")"
                 habitats.append(string)
+            else:
+                pass # Pokemon was not found in this Area.
 
+        # If the Pokemon exists, then the Areas it is found in will be printed.
         if len(habitats) >= 1:
-            print(f"{pkmn.title()} is located in:")
+            print(f"{pkmn_to_find.title()} is located in:")
             for x in habitats:
                 print(x)
 
