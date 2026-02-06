@@ -1,9 +1,26 @@
 import random
-#import modules.name_conventions.nc as nc
 from modules import nc as nc
+from modules import v as v
 
 class Area:
     def __init__(self, name):
+        """
+        Docstring for __init__
+        
+        :param self: Area object.
+        :param name: String representation of the area name with format: "Alfornada Cavern".
+
+        The name will be standardized such that as long as the name input are words separated by a space, it will become format "Alfornada Cavern".
+        snake_case_name will be of format "alfornada cavern".
+
+        pokemon is list of Strings representing Pokemon present in the area.
+
+        The dayparts (dawn, day, dusk, and night) are dictionaries that have the format: K: Pokemon name as str, V: float.
+        -  values within the daypart dictionaries are float values such as 11.7306, calculated by an integer value multiplied by biome_multiplier.
+        - For example with daypart value calculation: (50 * 0.234612) = 11.7306.
+        biome_multipliers is a dictionary that has the format: K: biome name as str, V: float.
+        - The values in biome_multipliers represent the amount of percentage that a certain biome covers in comparison to all covered biome square area.
+        """
         self.name = nc.standard(name)
         self.snake_case_name = nc.snake_case(name)
         self.pokemon = []
@@ -12,10 +29,23 @@ class Area:
         self.dusk = {}
         self.night = {}
         self.biome_multipliers = {}
+
         self.load_biome_multipliers()
         self.load_inserts()
 
     def load_biome_multipliers(self):
+        """
+        Docstring for load_biome_multipliers
+        
+        :param self: Area object.
+
+        This function will open the CSV files that have the name format for example "alfornada_cavern.csv".
+        The CSV files contain two headers: "Biome", and "Percentage".
+        Biome represents the biome name/type.
+        Percentage represents what percent the particular biome covers in comparison to all covered biome space.
+
+        This is stored into the Area object's biome_multipliers dictionary with format K: Biome as str, V: Percentage as float
+        """
         file_path = f"data/distribution/{self.snake_case_name}.csv"
         lines = ""
         with open(file_path, 'r') as f:
@@ -27,24 +57,26 @@ class Area:
             percentage = line[1][:len(line[1])-1] # This extra code is to remove the \n at the end of percentage
             self.biome_multipliers[biome] = float(percentage)
 
-    def power(self, power):
-        upper_bound = 0
-        if power == 1:
-            upper_bound = 50
-        elif power == 2:
-            upper_bound = 75
-        elif power == 3: 
-            upper_bound = 100
-        else:
-            return False
-        
-        if random.randint(1,100) <= upper_bound:
-            return True
-        else:
-            return False
-
     def parse_insert(self, insert_string):
-        # insert_string should look something like: Dugtrio,Ground,Ground,Cave,20,20,20,20
+        """
+        Docstring for parse_insert
+        
+        :param self: Area object.
+        :param insert_string: String object that has format like: "Dugtrio,Ground,Ground,Cave,20,20,20,20"
+
+        This function is only meant to be used within the load_insert() function within this Area class.
+
+        insert_string is a String that comes from a CSV file with headers: "Name", "Type1", "Type2", "Biome", "Dawn", "Day", "Dusk", and "Night"
+        This function will create identifier, which contains the name of the Pokemon, the version exclusivity (Scarlet or Violet if applicable), and the type(s).
+        - If the Pokemon has only one unique type, identifier will look like: "Dugtrio_Ground"
+        - If the Pokemon has two unique types, identifer will look like: "Gyarados_Water_Flying"
+        - If the Pokemon is a version exclusive (can only be found in a certain version of the game), identifier will look like: "Larvitar (Scarlet)_Rock_Ground"
+
+        Biome is used to return the biome_multiplier value, a float ranging from 0.0 to 1.0, representing percentage that a certain biome covers in comparison to all covered biome square area within an Area.
+        The integer values marked by Dawn, Day, etc., are multiplied by biome_multiplier, for example (20 * 1.0 = 20.0).
+        Identifier is also as a key value in daypart dictionaries such as dawn["Dugtrio_Ground"] = float value.
+        """
+
         line = insert_string.split(",")
         name = line[0]
         type1 = line[1]
@@ -77,6 +109,14 @@ class Area:
             self.night[identifier] = self.night[identifier] + night
 
     def load_inserts(self):
+        """
+        Docstring for load_inserts
+        
+        :param self: Area object.
+        
+        This function will open a CSV file with headers: "Name", "Type1", "Type2", "Biome", "Dawn", "Day", "Dusk", and "Night".
+        Every line will be read, and passed to the parse_insert() function.
+        """
         file_path = f"data/probability_insert/{self.snake_case_name}.csv"
         lines = ""
         with open(file_path, 'r') as f:
@@ -141,10 +181,31 @@ class Area:
         return any(pkmn_to_check == dupe.lower() for dupe in dupes)
 
     def distribution(self, game, time, type, power, dupes, check_dupes):
+        """
+        Docstring for distribution
+        
+        :param self: Area object.
+        :param game: String object representing game, either "Scarlet" or "Violet".
+        :param time: String object that represents the daypart, possible values are: "Dawn", "Day", "Dusk", and "Night".
+        :param type: String object that represents a Pokemon Type (Grass, Water, etc.).
+        :param power: Integer object ranging from 1, 2, or 3; represents an Encounter Power which increases likelihood of a Pokemon of a specific Type (Water-type Pokemon, etc.).
+        :param dupes: Set object storing String representations of Pokemon names; typically Game.dupes object. Set contains Pokemon that are considered "duplicates" and should be excluded, see Area.find_dupe(). 
+        :param check_dupes: Boolean flag that represents whether or not to exclude duplicate Pokemon.
 
+        This function is only meant to be used within the Game.distribution() function.
+
+        This function will do the following:
+        1) Select daypart based on time value.
+        2) Check if type value and power value are valid, if so, set multiplier. multiplier increases the chance of specific Type Pokemon of appearing, and decreases chance of other Type Pokemon of appearing.
+        3) Filter out Pokemon in the daypart based on Dupes Clause, and version exclusivity
+        4) Calculate float sum of Pokemon values
+        5) Calculate each Pokemon's percentage chance of appearing
+        6) Print list of Pokemon in descending order of percentage value
+
+        """
         # Choosing all possible wild Pokemon that are present within the day part selected.
-        time = time.lower().strip()
-        print("{0} ({1})".format(self.name,time.capitalize()))
+        time = v.resolve_daypart(time).lower()
+        print(f"{self.name} ({time.capitalize()})")
         selected = {}
         if time == "dawn":
             selected = self.dawn
@@ -156,12 +217,7 @@ class Area:
             selected = self.night
 
         # Ensures that types entered are legitimate types, and will ignore typos.
-        types = ["Normal","Fighting","Flying","Poison","Ground","Rock","Bug","Ghost","Steel","Fire","Water","Grass","Electric","Psychic","Ice","Dragon","Dark","Fairy"]
-        valid_type = False
-        for t in types:
-            if type.strip().lower() == t.strip().lower():
-                valid_type = True
-                break
+        valid_type = v.valid_type(type)
         
         """
         I am under the assumption that the way Encounter Powers works is: 
@@ -177,74 +233,75 @@ class Area:
                 upper_bound = 0.75
             elif power == 3: 
                 upper_bound = 1
-        multiplier = (1-upper_bound)
+        demultiplier = (1-upper_bound)
 
-        sum = 0
-        keys = selected.keys() # Keys are possible wild Pokemon present in the day part selected.
-        for k in keys: # For every while Pokemon
-            if self.find_dupe(dupes, k.split("_")[0], check_dupes) == False: # Proceed if neither the Pokemon (or related Pokemon) have already been captured
-                if game == "Scarlet" and k.find("Violet") == -1: # Proceed if the Pokemon is not an opposite version exclusive 
-                    if valid_type == True and upper_bound != 0 and k.find(type) == -1: # If there is an Encounter Power in use and the Pokemon is not of the correct type,
-                        sum = sum + selected[k]*multiplier # Apply the multiplier (actually makes chances worse for incorrect type pokemon)
-                    else:
-                        sum = sum + selected[k]
-                elif game == "Violet" and k.find("Scarlet") == -1:
-                    if valid_type == True and upper_bound != 0 and k.find(type) == -1:
-                        sum = sum + selected[k]*multiplier
-                    else:
-                        sum = sum + selected[k]
-        
-        names = []
-        percents = []
+        # Short lived class for the purpose of the following section
+        class Wild:
+            def __init__(self, name, percentage, matching_type):
+                self.name = name # string value
+                self.percentage = percentage # float value
+                self.matching_type = matching_type # boolean value
+
+            def sp(self, new_percentage): # stands for set_percentage
+                    new_percentage = new_percentage * 10000
+                    new_percentage = new_percentage // 1
+                    new_percentage = new_percentage / 100
+                    self.percentage = new_percentage
+
+        sum = 0.0
+        keys = selected.keys()
+        allowed_pkmn = []
         for k in keys:
-            if self.find_dupe(dupes, k.split("_")[0], check_dupes) == False:
-                if game == "Scarlet" and k.find("Violet") == -1:
-                    n = k.split("_")[0]
-                    percent = 0
-                    if valid_type == True and upper_bound != 0 and k.find(type) == -1:
-                        percent = selected[k]*multiplier/sum
-                    else:
-                        percent = selected[k]/sum
-                    index = -1
-                    percent = percent * 10000
-                    percent = percent // 1
-                    percent = percent / 100
-                    if len(percents) == 0:
-                        index = 0
-                    else:
-                        for x in range(len(percents)):
-                            if percent >= percents[x]:
-                                index = x
-                                break
-                        if index == -1:
-                            index = len(percents)
-                    names.insert(index, n)
-                    percents.insert(index, percent)
-                elif game == "Violet" and k.find("Scarlet") == -1:
-                    n = k.split("_")[0]
-                    percent = 0
-                    if valid_type == True and upper_bound != 0 and k.find(type) == -1:
-                        percent = selected[k]*multiplier/sum
-                    else:
-                        percent = selected[k]/sum
-                    index = 0
-                    percent = percent * 10000
-                    percent = percent // 1
-                    percent = percent / 100
-                    if len(percents) == 0:
-                        continue
-                    else:
-                        for x in range(len(percents)):
-                            if percent >= percents[x]:
-                                index = x
-                                break
-                            index = len(percents)-1
-                    names.insert(index, n)
-                    percents.insert(index, percent)
-        for x in range(len(names)):
-            print("{0}: {1}%".format(names[x],percents[x]))        
+            is_dupe = self.find_dupe(dupes, k.split("_")[0], check_dupes)
+            correct_version_ex = v.correct_version(game, k)
+            if is_dupe == False and correct_version_ex == True:
+                correct_type = (k.find(type) != -1)
+                allowed_pkmn.append(Wild(k,0,correct_type))
 
-    def generate(self, game, time, type, power, dupes, check_dupes):
+        for allowed in allowed_pkmn:
+            val = 0.0
+            if demultiplier != 1 and allowed.matching_type == False: 
+                val = selected[allowed.name]*demultiplier
+            else:
+                val = selected[allowed.name]
+            sum = sum + val
+
+        for allowed in allowed_pkmn:
+            val = 0.0
+            if demultiplier != 1 and allowed.matching_type == False: 
+                val = selected[allowed.name]*demultiplier
+            else:
+                val = selected[allowed.name]
+            allowed.sp(val/sum)
+
+        allowed_pkmn = sorted(allowed_pkmn, key=lambda wild: wild.percentage, reverse=True)
+
+        for allowed in allowed_pkmn:
+            pkmn_name = allowed.name.split("_")[0]
+            print(f"{pkmn_name}: {allowed.percentage}%")
+        return allowed_pkmn
+            
+    def generate(self, game, time, type, power_int, dupes, check_dupes):
+        """
+        Docstring for generate
+        
+        :param self: Area object.
+        :param game: String object representing game, either "Scarlet" or "Violet"
+        :param time: String object that represents the daypart, possible values are: "Dawn", "Day", "Dusk", and "Night".
+        :param type: String object that represents a Pokemon Type (Grass, Water, etc.).
+        :param power: Integer object ranging from 1, 2, or 3; represents an Encounter Power which increases likelihood of a Pokemon of a specific Type (Water-type Pokemon, etc.).
+        :param dupes: Set object storing String representations of Pokemon names; typically Game.dupes object. Set contains Pokemon that are considered "duplicates" and should be excluded, see Area.find_dupe(). 
+        :param check_dupes: Boolean flag that represents whether or not to exclude duplicate Pokemon.
+
+        This function is only meant to be used within the Game.distribution() function.
+
+        This function will do the following:
+        1) Select daypart based on time value.
+        2) Check if type value and power value are valid, if so, set multiplier. multiplier increases the chance of specific Type Pokemon of appearing, and decreases chance of other Type Pokemon of appearing.
+        3) Filter out Pokemon in the daypart based on Dupes Clause, version exclusivity, and Encounter Power; and create number ranges that will consider a Pokemon "chosen" or "encountered".
+        4) Generate a random value, and check which Pokemon was "chosen"/"encountered"
+        """
+        # Short lived class for the purpose of this function.
         class Range:
             def __init__(self, name, lower, upper):
                 self.name = name
@@ -254,21 +311,8 @@ class Area:
             def enclosed(self, number):
                 return (self.lower <= number and number <= self.upper)             
 
-        # Ensures that types entered are legitimate types, and will ignore typos.
-        types = ["Normal","Fighting","Flying","Poison","Ground","Rock","Bug","Ghost","Steel","Fire","Water","Grass","Electric","Psychic","Ice","Dragon","Dark","Fairy"]
-        valid_type = False
-        for t in types:
-            if type.strip().lower() == t.strip().lower():
-                valid_type = True
-                break
-        
-        # If the type entered is real, then check if the specific type is activated.
-        power_activated = False
-        if valid_type == True:
-            power_activated = self.power(power)
-
         # Select a day part
-        time = time.lower().strip()
+        time = v.resolve_daypart(time).lower()
         selected = {}
         if time == "dawn":
             selected = self.dawn
@@ -279,23 +323,29 @@ class Area:
         elif time == "night":
             selected = self.night
 
-        sum = 0
+        # Ensures that types entered are legitimate types, and will ignore typos.
+        valid_type = v.valid_type(type)
+        
+        # If the type entered is real, then check if the Encounter Power is activated
+        power_activated = False
+        if valid_type == True:
+            power_activated = v.power(power_int)
+
+        
+        sum = 0.0
         keys = selected.keys() # Keys are possible wild Pokemon present in the day part selected.
         ranges = []
 
-        for k in keys: # For every wild Pokemon
-            if self.find_dupe(dupes, k.split("_")[0], check_dupes) == False: # Proceed if neither the Pokemon (or related Pokemon) have already been captured
-                if game == "Scarlet" and k.find("Violet") == -1: # Proceed if the Pokemon is not an opposite version exclusive 
-                    if power_activated == True and k.find(type) == -1: # Skip if a specific type is enforced, and the Pokemon does not match the type.
-                        continue
-                    ranges.append(Range(k, sum, sum + selected[k])) # Otherwise, create ranges with bounds like: [(0, 15.7563), (15.7563, 26.0), etc.]
-                    sum = sum + selected[k]
-                elif game == "Violet" and k.find("Scarlet") == -1:
-                    if power_activated == True and k.find(type) == -1:
-                        continue
-                    ranges.append(Range(k, sum, sum + selected[k]))
-                    sum = sum + selected[k]
-    
+        for k in keys:
+            is_dupe = self.find_dupe(dupes, k.split("_")[0], check_dupes) # Boolean
+            correct_version_ex = v.correct_version(game, k) # Boolean
+            correct_type = (k.find(type) != -1) # Boolean
+            if is_dupe == False and correct_version_ex == True: # Main filter
+                if power_activated == True and correct_type == False: # Secondary filter
+                    continue
+                ranges.append(Range(k, sum, sum + selected[k])) # Otherwise, create ranges with bounds like: [(0, 15.7563), (15.7563, 26.0), etc.]
+                sum = sum + selected[k]
+
         rng = random.uniform(0, sum) # Generate a value
         for r in ranges: # For every range created...
             if r.enclosed(rng): # Proceed if the value falls within the range
@@ -304,6 +354,13 @@ class Area:
                 return r.name
 
     def load_areas():
+        """
+        Docstring for load_areas
+
+        Static method meant to be used by Game objects.
+        Loads the areas, and returns them as a list of dictionaries.
+        The dictionaries are numerical and alpha, which take an integer or string respectively.
+        """
         alfornada_cavern = Area("Alfornada Cavern")
         asado_desert = Area("Asado Desert")
         cabo_poco = Area("Cabo Poco")
