@@ -1,5 +1,6 @@
 from models.area import Area
 import modules.v as v
+from pathlib import Path
 
 class Game:
     def __init__(self, game):
@@ -22,6 +23,14 @@ class Game:
         self.load_areas()
         
     def define_links(self):
+        """
+        Docstring for define_links
+        
+        :param self: Game object.
+
+        This function will read the links.txt, which contain a Pokemon, and the Pokemon it is connected to that are considered "dupes".
+        These links will be parsed and added to a dictionary.
+        """
         links = ""
         with open("data/pokedex/links.txt", "r") as f1:
             links = f1.readlines()
@@ -32,12 +41,29 @@ class Game:
             self.links[header_pkmn] = linked_pkmn
 
     def populate_dupes(self):
+        """
+        Docstring for populate_dupes
+        
+        :param self: Game object.
+
+        For every Pokemon in "the box", search its name in the links dictionary, and add all of those linked Pokemon to the dupes dictionary.
+        """
         for boxed_pkmn in self.box:
             link = self.links[boxed_pkmn]
             for pkmn in link:
                 self.dupes.add(pkmn)
 
     def generate(self, area, time, type, power, check_dupes):
+        """
+        Docstring for generate
+        
+        :param self: Game object.
+        :param area: String or Integer object representing the area.
+        :param time: String or Integer object representing the daypart.
+        :param type: String object representing the Pokemon Type (Grass, Water, etc.).
+        :param power: Integer object related to Encounter Power (Levels 1, 2, or 3).
+        :param check_dupes: Boolean object that checks whether or not to exclude dupes. Defaults to False later if non-boolean object.
+        """
         pkmn_set = {}
         if isinstance(area, str):
             area = area.strip()
@@ -75,6 +101,16 @@ class Game:
         pkmn_set[area].generate(self.game, daypart, type, power, self.dupes, check_dupes)
 
     def distribution(self, area, time, type, power, check_dupes):
+        """
+        Docstring for distribution
+        
+        :param self: Game object.
+        :param area: String or Integer object representing the area.
+        :param time: String or Integer object representing the daypart.
+        :param type: String object representing the Pokemon Type (Grass, Water, etc.).
+        :param power: Integer object related to Encounter Power (Levels 1, 2, or 3).
+        :param check_dupes: Boolean object that checks whether or not to exclude dupes. Defaults to False later if non-boolean object.
+        """
         pkmn_set = {}
         if isinstance(area, str):
             area = area.strip()
@@ -185,12 +221,36 @@ class Game:
         return habitats
 
     def load_areas(self):
+        """
+        Docstring for load_areas
+        
+        :param self: Game object.
+
+        Loads all areas.
+        """
         duo = Area.load_areas()
         self.numerical = duo[0]
         self.alphabetical = duo[1]
 
     def print_box(self):
+        # Placeholder until it is figured out how to export a text file
+        folder = f"data/pokedex"
+        file_name = f"box.txt"
+        file_path = f"{folder}/{file_name}"
+
+        # Overwriting in case there is pre-existing text
+        with open(file_path,"w") as f1:
+            f1.write("")
+
+        # Writing each biome and distribution
+        with open(file_path, "a") as f1:
+            for pkmn in self.box:
+                f1.write(f"{pkmn},")
         pass
 
-    def load_box(self):
+    def load_box_string(self, string):
+        # Placeholder until it is figured out how to read an imported text file
+        string = string[:len(string)-1]
+        pkmns = string.split(",")
+        print(len(pkmns))
         pass
