@@ -67,7 +67,7 @@ def locate_pokemon(pokemon: Pokemon):
     g = Game("Scarlet")
     g.box = convert_box(memory["s1"])
     habitats = g.locate(pokemon.name, False)
-    return Locations(pkmn_name=pokemon.name, locations=convert_locations(habitats))
+    return Locations(pkmn_name=pokemon.name.title(), locations=convert_locations(habitats))
     
 
 if __name__ == "__main__":

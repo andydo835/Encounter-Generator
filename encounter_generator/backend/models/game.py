@@ -182,11 +182,22 @@ class Game:
 
             # Second, check dayparts.
             # False if area.dawn[native_pkmn] == 0.0 else True
-            dawn_found = any(False if (native_pkmn.strip().lower().split("_")[0].find(pkmn_to_find) == -1) else False if area.dawn[native_pkmn] == 0.0 else True for native_pkmn in area.dawn.keys())
-            day_found = any(False if (native_pkmn.strip().lower().split("_")[0].find(pkmn_to_find) == -1) else False if area.day[native_pkmn] == 0.0 else True for native_pkmn in area.day.keys())
-            dusk_found = any(False if (native_pkmn.strip().lower().split("_")[0].find(pkmn_to_find) == -1) else False if area.dusk[native_pkmn] == 0.0 else True for native_pkmn in area.dusk.keys())
-            night_found = any(False if (native_pkmn.strip().lower().split("_")[0].find(pkmn_to_find) == -1) else False if area.night[native_pkmn] == 0.0 else True for native_pkmn in area.night.keys())
+            daypart_found = [False, False, False, False]
+            daypart_keys = [area.dawn.keys(), area.day.keys(), area.dusk.keys(), area.night.keys()]
+            for x in range(len(daypart_keys)):
+                dp = daypart_keys[x]
+                for pkmn in dp:
+                    name = pkmn.strip().lower().split("_")[0]
+                    name = name if (name.find("scarlet") == -1 and name.find("violet") == -1) else name.split(" ")[0]
+                    if name == pkmn_to_find:
+                        daypart_found[x] = True
+                        break
 
+            dawn_found = daypart_found[0]
+            day_found = daypart_found[1]
+            dusk_found = daypart_found[2]
+            night_found = daypart_found[3]
+            
             # If a Pokemon are found in every daypart, then simply the Area is named.
             if dawn_found and day_found and dusk_found and night_found:
                 habitats.append(area.name)
