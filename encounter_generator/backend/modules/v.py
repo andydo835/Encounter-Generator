@@ -110,3 +110,94 @@ def resolve_daypart(time):
             return False
         elif daypart != "":
             return daypart
+
+def valid_pokemon(string_input):
+    pokedex = set()
+    with open(r"data/pokedex/paldea_dex.txt","r") as f1:
+        temp = f1.readlines()
+        for x in range(len(temp)):
+            pokedex.add(temp[x][0:len(temp[x])-1].strip())
+    return any(string_input.strip().lower() == pkmn.strip().lower() for pkmn in pokedex)
+
+def version_exclusive(string_input):
+    scarlet = set()
+    violet = set()
+
+    scarlet.add("Vulpix")
+    scarlet.add("Ninetails")
+    scarlet.add("Tauros (Blaze Breed)")
+    scarlet.add("Gligar")
+    scarlet.add("Larvitar")
+    scarlet.add("Pupitar")
+    scarlet.add("Tyranitar")
+    scarlet.add("Cranidos")
+    scarlet.add("Rampardos")
+    scarlet.add("Drifloon")
+    scarlet.add("Drifblim")
+    scarlet.add("Stunky")
+    scarlet.add("Skuntank")
+    scarlet.add("Gliscor")
+    scarlet.add("Deino")
+    scarlet.add("Zweilous")
+    scarlet.add("Hydreigon")
+    scarlet.add("Skrelp")
+    scarlet.add("Dragalge")
+    scarlet.add("Oranguru")
+    scarlet.add("Cramorant")
+    scarlet.add("Stonjourner")
+    scarlet.add("Armarouge")
+    scarlet.add("Great Tusk")
+    scarlet.add("Scream Tail")
+    scarlet.add("Brute Bonnet")
+    scarlet.add("Flutter Mane")
+    scarlet.add("Slither Wing")
+    scarlet.add("Sandy Shocks")
+    scarlet.add("Roaring Moon")
+    scarlet.add("Koraidon")
+    scarlet.add("Walking Wake")
+    scarlet.add("Gouging Fire")
+    scarlet.add("Raging Bolt")
+
+    violet.add("Sandshrew")
+    violet.add("Sandslash")
+    violet.add("Tauros (Aqua Breed)")
+    violet.add("Aipom")
+    violet.add("Misdreavus")
+    violet.add("Gulpin")
+    violet.add("Swalot")
+    violet.add("Bagon")
+    violet.add("Shelgon")
+    violet.add("Salamence")
+    violet.add("Shieldon")
+    violet.add("Bastiodon")
+    violet.add("Ambipom")
+    violet.add("Mismagius")
+    violet.add("Clauncher")
+    violet.add("Clawitzer")
+    violet.add("Passimian")
+    violet.add("Morpeko")
+    violet.add("Dreepy")
+    violet.add("Drakloak")
+    violet.add("Dragapult")
+    violet.add("Eiscue")
+    violet.add("Ceruledge")
+    violet.add("Iron Treads")
+    violet.add("Iron Bundle")
+    violet.add("Iron Hands")
+    violet.add("Iron Jugulis")
+    violet.add("Iron Moth")
+    violet.add("Iron Thorns")
+    violet.add("Iron Valiant")
+    violet.add("Miraidon")
+    violet.add("Iron Leaves")
+    violet.add("Iron Boulder")
+    violet.add("Iron Crown")
+
+    scarlet_pkmn = any(string_input.strip().lower() == pkmn.strip().lower() for pkmn in scarlet)
+    violet_pkmn = any(string_input.strip().lower() == pkmn.strip().lower() for pkmn in violet)
+    if scarlet_pkmn:
+        return "scarlet"
+    elif violet_pkmn:
+        return "violet"
+    else:
+        return "none"

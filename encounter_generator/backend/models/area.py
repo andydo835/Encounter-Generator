@@ -169,8 +169,8 @@ class Area:
             - Add uniqueness to the roster that you build
             - Add difficulty by making Pokemon irreplaceable
         """
-        # Redundancy to check if rule_enabled is a Boolean 
-        rule_enabled = (rule_enabled) if (True | False) else (False)
+
+        rule_enabled = rule_enabled if rule_enabled == True or False else False
 
         if rule_enabled == False:
             return False
@@ -178,9 +178,9 @@ class Area:
         # Compare the Pokemon to be checked to every Pokemon in the dupes list
         # Return whether or not the Pokemon is a dupe
         # Names are compared in lowercase in case of any strange case input errors.
-        return any(pkmn_to_check == dupe.lower() for dupe in dupes)
+        return any(pkmn_to_check.lower() == dupe.lower() for dupe in dupes)
 
-    def distribution(self, game, time, type, power, dupes, check_dupes):
+    def distribution(self, game, time, type, power, dupes, check_dupes, print_boolean=False):
         """
         Docstring for distribution
         
@@ -276,12 +276,13 @@ class Area:
 
         allowed_pkmn = sorted(allowed_pkmn, key=lambda wild: wild.percentage, reverse=True)
 
-        for allowed in allowed_pkmn:
-            pkmn_name = allowed.name.split("_")[0]
-            print(f"{pkmn_name}: {allowed.percentage}%")
+        if print_boolean:
+            for allowed in allowed_pkmn:
+                pkmn_name = allowed.name.split("_")[0]
+                print(f"{pkmn_name}: {allowed.percentage}%")
         return allowed_pkmn
             
-    def generate(self, game, time, type, power_int, dupes, check_dupes):
+    def generate(self, game, time, type, power_int, dupes, check_dupes, print_boolean=False):
         """
         Docstring for generate
         
@@ -345,13 +346,16 @@ class Area:
                     continue
                 ranges.append(Range(k, sum, sum + selected[k])) # Otherwise, create ranges with bounds like: [(0, 15.7563), (15.7563, 26.0), etc.]
                 sum = sum + selected[k]
-
+        if len(ranges) == 0:
+            return [self.name, time.title(), "None"]
         rng = random.uniform(0, sum) # Generate a value
         for r in ranges: # For every range created...
             if r.enclosed(rng): # Proceed if the value falls within the range
                 pkmn_name = r.name.split("_")[0]
-                print(f"{self.name} ({time.title()}): {pkmn_name}")
-                return r.name
+                return_list = [self.name, time.title(), pkmn_name]
+                if print_boolean:
+                    print(f"{self.name} ({time.title()}): {pkmn_name}")
+                return return_list
 
     def load_areas():
         """

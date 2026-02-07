@@ -2,11 +2,15 @@ import React, { useEffect, useState } from 'react';
 import api from "../api.js";
 import AddPokemonForm from './AddPokemonForm';
 import LocatePokemonForm from './LocatePokemonForm.jsx';
+import DistributionForm from './DistributionForm.jsx';
+import GenerationForm from './GenerationForm.jsx';
 
 const PokemonList = () => {
   const [pokemons, setPokemons] = useState([]);
   const [locations, setLocations] = useState([]);
   const [locateName, setLocateName] = useState([]);
+  const [distributions, setDistributions] = useState([]);
+  const [generation, setGeneration] = useState([]);
 
   const fetchPokemons = async () => {
     try {
@@ -26,6 +30,40 @@ const PokemonList = () => {
     }
   };
 
+  const generate = async (game, area, time, pkmnType, power, dupes) => {
+    try {
+      const response = await api.post('/generate', {
+        game: game,
+        area: area, 
+        time: time, 
+        pkmnType: pkmnType, 
+        power: power, 
+        dupes: dupes
+    });
+    setGeneration(response.data)
+    //console.log(response.data)
+    } catch (error) {
+        c
+        console.error("Error generating Pokémon", error);
+    }
+  };
+
+
+  const distribution = async (game, area, time, pkmnType, power, dupes) => {
+    try {
+      const response = await api.post('/distribution', {
+        game: game,
+        area: area, 
+        time: time, 
+        pkmnType: pkmnType, 
+        power: power, 
+        dupes: dupes
+    });
+    setDistributions(response.data.distributions)
+    } catch (error) {
+        console.error("Error distributing Pokémon", error);
+    }
+  };
 
   const locatePokemon = async (pokemonName) => {
     try {
@@ -51,6 +89,15 @@ const PokemonList = () => {
         ))}
       </ul>
       <AddPokemonForm addPokemon={addPokemon} />
+      <GenerationForm generate={generate} />
+        <div>{generation !== null ? <p>{generation.area} ({generation.time}): {generation.pkmn_name}</p> : <p></p>}</div>
+
+      <DistributionForm distribution={distribution}/>
+      <ul>
+        {distributions.map((distribution, index) => (
+          <li key={index}>{distribution.pkmn_name}: {distribution.percentage}%</li>
+        ))}
+      </ul>
       <LocatePokemonForm locatePokemon={locatePokemon} />
       <div>{locations.length > 0 ? <p>{locateName} can be found in:</p> : <p>{locateName} cannot be found in the game.</p>}</div>
       <ul>

@@ -9,18 +9,9 @@ class Game:
         self.box = []
         self.links = {}
         self.dupes = set()
-        self.pokedex = []
+        
         self.alphabetical = {}
         self.numerical = {}
-
-
-        #with open("data/pokedex/paldea_dex.txt","r") as f1:
-        #encounter_generator\backend\data\pokedex\paldea_dex.txt
-        with open(r"data/pokedex/paldea_dex.txt","r") as f1:
-            self.pokedex = f1.readlines()
-        
-        for x in range(len(self.pokedex)):
-            self.pokedex[x] = self.pokedex[x][0:len(self.pokedex[x])-1].strip()
         
         self.define_links()
         self.load_areas()
@@ -52,11 +43,14 @@ class Game:
         For every Pokemon in "the box", search its name in the links dictionary, and add all of those linked Pokemon to the dupes dictionary.
         """
         for boxed_pkmn in self.box:
-            link = self.links[boxed_pkmn]
+            try:
+                link = self.links[boxed_pkmn]
+            except:
+                continue
             for pkmn in link:
                 self.dupes.add(pkmn)
 
-    def generate(self, area, time, type, power, check_dupes):
+    def generate(self, area, time, type, power, check_dupes, print_boolean=False):
         """
         Docstring for generate
         
@@ -101,9 +95,9 @@ class Game:
         else:
             pkmn_set = self.alphabetical
         
-        pkmn_set[area].generate(self.game, daypart, type, power, self.dupes, check_dupes)
+        return pkmn_set[area].generate(self.game, daypart, type, power, self.dupes, check_dupes)
 
-    def distribution(self, area, time, type, power, check_dupes):
+    def distribution(self, area, time, type, power, check_dupes, print_boolean=False):
         """
         Docstring for distribution
         
@@ -148,7 +142,7 @@ class Game:
         else:
             pkmn_set = self.alphabetical
         
-        pkmn_set[area].distribution(self.game, daypart, type, power, self.dupes, check_dupes)
+        return pkmn_set[area].distribution(self.game, daypart, type, power, self.dupes, check_dupes, print_boolean)
 
     def locate(self, pkmn_to_find, print_boolean):
         """
@@ -263,8 +257,13 @@ class Game:
         pass
 
     def load_box_string(self, string):
+
+    
         # Placeholder until it is figured out how to read an imported text file
         string = string[:len(string)-1]
         pkmns = string.split(",")
         print(len(pkmns))
         pass
+
+    def real_pokemon(self, string):
+        return any(string.strip().lower() == pkmn.strip().lower() for pkmn in self.pokedex)
